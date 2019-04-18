@@ -44,7 +44,7 @@ In order to generate a signature you need the following information:
 
 Your signature generation function will look something like this:
 ```
-base64(rsa_sha256(PARTNER_ID + '\\n' + URL + '\\n' + HTTP_METHOD + '\\n' + TIMESTAMP + '\\n' + PAYLOAD))
+base64(rsa_sha256(PARTNER_ID + "\n" + URL + "\n" + HTTP_METHOD + "\n" + TIMESTAMP + "\n" + PAYLOAD))
 ```
 **(Note that the newline character is escaped)**
 
