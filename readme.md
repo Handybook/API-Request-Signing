@@ -50,7 +50,7 @@ algorithm = SHA256
 base64(private_key.sign(message, padding, algorithm))
 ```
 - `base64` is Strict Base64 encoding (RFC 4648). No line feeds are added.
-- The hashing algorithm is SHA256 using your RSA private key.
+- The signing algorithm is SHA256 using your RSA private key.
 - Padding is PKCS1v15 if you need to specify.
 
 Please check out our examples to see this done in various languages.
