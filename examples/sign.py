@@ -27,7 +27,7 @@ class Sample:
         partner_id = 'partner_name'
         url = 'https://partners.services.handy.com/api/v1/orders'
         http_method = 'post'
-        timestamp = int(time.time())
+        timestamp = str(int(time.time()))
 
         request_message = self.request_message(partner_id, url, http_method, timestamp, payload)
 
@@ -42,14 +42,7 @@ class Sample:
         print("HDY-SIGNATURE: {}".format(signature))
 
     def request_message(self, partner_id, url, http_method, timestamp, payload):
-        data = "{partner_id}\\n{url}\\{method}\\n{timestamp}\\n{payload}".format(partner_id = partner_id,
-                url = url,
-                method = http_method,
-                timestamp = timestamp,
-                payload = payload)
-        return data
-
-
+        return bytes(("\\n").join([partner_id, url, http_method, timestamp, payload]), encoding = 'utf-8')
 
 s = Sample()
 s.main()
