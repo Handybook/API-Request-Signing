@@ -44,12 +44,14 @@ In order to generate a signature you need the following information:
 
 Your signature generation function will look something like this:
 ```
-base64(rsa_sha256(PARTNER_ID + "\n" + URL + "\n" + HTTP_METHOD + "\n" + TIMESTAMP + "\n" + PAYLOAD))
+message = PARTNER_ID + "\n" + URL + "\n" + HTTP_METHOD + "\n" + TIMESTAMP + "\n" + PAYLOAD
+padding = PKCS1v15
+algorithm = SHA256
+base64(private_key.sign(message, padding, algorithm))
 ```
-**(Note that the newline character is escaped)**
-
 - `base64` is Strict Base64 encoding (RFC 4648). No line feeds are added.
-- `rsa_sha256` is the RSA-SHA256 hashing algorithm using your private key. Padding is PKCS1v15 if you need to specify.
+- The signing algorithm is SHA256 using your RSA private key.
+- Padding is PKCS1v15 if you need to specify.
 
 Please check out our examples to see this done in various languages.
 
